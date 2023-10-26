@@ -12,6 +12,19 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - name: Set up python3.5
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.5
 
-    - name: Run one-line script
-      run: make hello 
+    - name: install dependency
+      run: |
+        make install
+
+    - name: Lint with pylint
+      run: |
+        make lint
+
+    - name: Test with pytest
+      run: |
+        make test
